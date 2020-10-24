@@ -59,7 +59,7 @@ app.layout = html.Div(
 
 # Descriptive analytics
 descriptive_layout = html.Div(
-    [descriptive_analytics.layout, descriptive_analytics.grap]
+    [descriptive_analytics.layout, descriptive_analytics.boxplot_1]
 )
 
 # Clustering Anaysis
@@ -71,11 +71,10 @@ recommender_layout = html.Div([recommender_system.layout])
 # About us
 about_layout = html.Div([about_us.layout])
 
-# Descriptive analytics
-descriptive_analytics_layout = html.Div([about_us.layout])
+# About us part 2 for testong
+about_layout = html.Div([about_us.layout])
 
 
-###############################################
 #
 #           APP INTERACTIVITY:
 #
