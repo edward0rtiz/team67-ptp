@@ -13,9 +13,10 @@ import pandas as pd
 # df_ci = __import__("./data/dataframes").df_ci
 
 # from dataframes import df_ci
+from .data.dataframes import df_t
 
-# from .data.dataframes import df_ci
-from .data.dataframes_ftr import df_x
+# from .data.postgresql.process_db import test
+# from .data.dataframes_ftr import df_t
 
 # Dash Bootstrap Components
 import dash_bootstrap_components as dbc
@@ -39,53 +40,6 @@ layout = html.Div(
     ]
 )
 
-df = px.data.iris()  # iris is a pandas DataFrame
-fig = px.scatter(df, x="sepal_width", y="sepal_length")
-
-grap = dbc.Container(
-    [
-        html.H1("Iris k-means clustering"),
-        html.Hr(),
-        dbc.Row(
-            [
-                dbc.Col(html.Div(dcc.Graph(figure=fig)), md=6),
-                dbc.Col(
-                    html.Div(
-                        dcc.Graph(
-                            id="example-graph",
-                            figure={
-                                "data": [
-                                    {
-                                        "x": [1, 2, 3],
-                                        "y": [4, 1, 2],
-                                        "type": "bar",
-                                        "name": "SF",
-                                    },
-                                    {
-                                        "x": [1, 2, 3],
-                                        "y": [2, 4, 5],
-                                        "type": "bar",
-                                        "name": u"Montréal",
-                                    },
-                                    {
-                                        "x": [1, 2, 3],
-                                        "y": [1, 3, 6],
-                                        "type": "bar",
-                                        "name": u"Colombia",
-                                    },
-                                ],
-                                "layout": {"title": "Test Histogram"},
-                            },
-                        )
-                    ),
-                    md=6,
-                ),
-            ],
-            align="center",
-        ),
-    ],
-    fluid=True,
-)
 """
 ######### TRANSACTION CARD ID ##################
 fig_df_ci = go.Figure()
@@ -106,6 +60,26 @@ card_installment = dbc.Container(
     ],
     fluid=True,
 )
+"""
+######### TRANSACTION DESCRIPTION ##################
+fig_df_t = px.bar(df_t, x="transaction_description", y="amount")
+fig_df_t.update_layout(
+    title_text="Transactions Description",  # title of plot
+    xaxis_title_text="Number of card Installments",  # xaxis label
+    yaxis_title_text="Amount transactions",  # yaxis label
+)
+transaction_amount = dbc.Container(
+    [
+        dbc.Row(
+            [
+                dbc.Col(html.Div(dcc.Graph(figure=fig_df_t)), md=4),
+            ],
+            align="center",
+        ),
+    ],
+    fluid=True,
+)
+
 """
 ######### BLOXPLOT TEST #########
 fig_x = go.Figure()
@@ -140,3 +114,4 @@ boxplot_1 = dbc.Container(
     ],
     fluid=True,
 )
+"""

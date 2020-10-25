@@ -16,7 +16,7 @@ layout = html.Div(
     [
         dbc.Alert(
             [
-                html.H3("Transactional Analytics Platform", style={"color": "#F37126"}),
+                html.H3("Transactional Analytics Platform", style={"color": "#F36E21"}),
                 html.P(
                     "Place to pay analytical platform for the analysis of the transactional behavior of your customers",
                     style={"color": "#8190A5", "font-weight": "bold"},

@@ -59,7 +59,7 @@ app.layout = html.Div(
 
 # Descriptive analytics
 descriptive_layout = html.Div(
-    [descriptive_analytics.layout, descriptive_analytics.boxplot_1]
+    [descriptive_analytics.layout, descriptive_analytics.transaction_amount]
 )
 
 # Clustering Anaysis
