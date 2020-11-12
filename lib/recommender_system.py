@@ -1,5 +1,6 @@
 # Basics Requirements
-import pathlib
+# import pathlib
+
 import pandas as pd
 import numpy as np
 import os
@@ -8,15 +9,12 @@ from dash.dependencies import Input, Output, State, ClientsideFunction
 from dash.exceptions import PreventUpdate
 import dash_core_components as dcc
 import dash_html_components as html
-import pandas as pd
-
 app = __import__("app").app
-# Dash Bootstrap Components
 import dash_bootstrap_components as dbc
 from app import app
+from .data.dataframes import ds_x
+from .data.dataframes import df_x
 
-from .data.dataframes_ftr import df_x
-from .data.dataframes_ftr import ds_x
 
 # PLACE THE COMPONENTS IN THE LAYOUT
 
@@ -26,7 +24,9 @@ layout = html.Div(
             [
                 html.H3("Recommender System", style={"color": "#F37126"}),
                 html.P(
-                    "Recommendation system that gives you the list of products that each of your clients are model likely to buy",
+                    "Recommendation system that gives you the list of \
+                        products that each of your clients \
+                            are model likely to buy",
                     style={"color": "#8190A5", "font-weight": "bold"},
                 ),
             ],
@@ -83,32 +83,34 @@ def update_output(n_clicks, value):
         .count()
     ).rename(columns={"item": "merchant_id", "user": "No.Compras"})
     out2 = (
-        pd.merge(out, ds_x, how="inner", left_on="merchant_id", right_on="item1")
+        pd.merge(out, ds_x, how="inner",
+                 left_on="merchant_id", right_on="item1")
         .drop(columns="item1")
         .rename(columns={"item2": "item"})
     )
     out3 = (
-        pd.merge(out, ds_x, how="inner", left_on="merchant_id", right_on="item1")
+        pd.merge(out, ds_x, how="inner",
+                 left_on="merchant_id", right_on="item1")
         .drop(columns="item1")
         .rename(columns={"item2": "item"})
     )
     out2 = out2.append(out3, ignore_index=True)
     out2 = pd.merge(
-        out2, out, how="left", right_on="merchant_id", left_on="item", indicator=True
+        out2, out, how="left",
+        right_on="merchant_id", left_on="item", indicator=True
     )
     out2 = out2[out2["_merge"] == "left_only"]
-    out2["score"] = out2["similarity"] * out2["No.Compras_x"]
+    out2["score by %"] = round(100 * (out2["similarity"] * out2["No.Compras_x"]), 4)
     out2 = (
-        out2[["item", "score"]]
+        out2[["item", "score by %"]]
         .groupby(by="item", as_index=False)
         .sum()
-        .sort_values(by="score", ascending=False)
+        .sort_values(by="score by %", ascending=False)
     )
     out2.rename(columns={"item": "merchant_id"}, inplace=True)
-    out4 = out2.drop(["score"], axis=1)
     result = (
         html.Div(dbc.Row(style={"height": "1rem"})),
-        html.Div(["The payer if was :{}".format(value)]),
+        html.Div(["The payer id was : {}".format(value)]),
         html.Div(dbc.Row(style={"height": "1rem"})),
         html.Div("This customer has bought from:"),
         html.Div(
@@ -122,7 +124,8 @@ def update_output(n_clicks, value):
             ]
         ),
         html.Div(
-            "The recommendations for this client are as follows, from highest to lowest in order of importance"
+            "The recommendations for this client are as \
+            follows, from highest to lowest in order of importance"
         ),
         html.Div(
             [

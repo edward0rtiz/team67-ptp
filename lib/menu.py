@@ -5,13 +5,7 @@ import dash
 from dash.dependencies import Input, Output, State, ClientsideFunction
 import dash_core_components as dcc
 import dash_html_components as html
-
-
-# Dash Bootstrap Components
 import dash_bootstrap_components as dbc
-
-# Data
-import json
 from datetime import datetime as dt
 
 
@@ -40,7 +34,8 @@ def Navbar():
                 dbc.NavLink("Clustering Analysis", href="/clustering_analysis")
             ),
             dbc.NavItem(
-                dbc.NavLink("Descriptive Analytics", href="/descriptive_analytics")
+                dbc.NavLink("Descriptive Analytics",
+                            href="/descriptive_analytics")
             ),
             dbc.NavItem(dbc.NavLink("About Us", href="/about_us")),
         ],

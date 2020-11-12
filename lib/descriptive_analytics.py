@@ -1,5 +1,4 @@
 # Basics Requirements
-app = __import__("app").app
 import pathlib
 import os
 import dash
@@ -7,10 +6,12 @@ from dash.dependencies import Input, Output, State, ClientsideFunction
 from dash.exceptions import PreventUpdate
 import dash_core_components as dcc
 import dash_html_components as html
-import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
 import dash_bootstrap_components as dbc
+# import plotly.express as px
+
+app = __import__("app").app
 
 
 # from .data.dataframes import df_t

@@ -7,24 +7,13 @@ from dash.exceptions import PreventUpdate
 import dash_core_components as dcc
 import dash_html_components as html
 import plotly.graph_objects as go
-import plotly.express as px
+# import plotly.express as px
 
 # Dash Bootstrap Components
 import dash_bootstrap_components as dbc
 
-# Data
-import math
-import numpy as np
-import datetime as dt
-import pandas as pd
-import json
-
 # Recall app
 from app import app, server
-
-# external_stylesheets = [
-# app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-
 
 ###########################################################
 #
@@ -41,14 +30,6 @@ from lib import (
     recommender_system,
     about_us,
 )
-
-# from flask_caching import Cache
-
-# PLACE THE COMPONENTS IN THE LAYOUT
-# cache = Cache(app.server, config={"CACHE_TYPE": "filesystem", "CACHE_DIR": "cache"})
-# app.config.supress_callback_exceptions = True
-
-# timeout = 20
 
 PTP_LOGO = "../static/images/placetopay.png"
 PTP_LOGO1 = "../assets/correlation_one2.png"
@@ -88,7 +69,6 @@ app.layout = html.Div(
             ]
         ),
     ]
-    # className="ds4a-app",  # You can also add your own css files by locating them into the assets folder
 )
 
 ###############################################
@@ -108,11 +88,12 @@ descriptive_layout = html.Div(
     ]
 )
 
-# Clustering Anaysis
+# Clustering Analysis
 clustering_layout = html.Div([clustering_analysis.layout])
 
 # Recommender System
-recommender_layout = html.Div([recommender_system.layout, recommender_system.form])
+recommender_layout = html.Div([recommender_system.layout,
+                               recommender_system.form])
 
 # About us
 about_layout = html.Div([about_us.layout])
@@ -121,8 +102,9 @@ about_layout = html.Div([about_us.layout])
 #           APP INTERACTIVITY:
 #
 ###############################################
+
+
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
-# @cache.memoize(timeout=timeout)  # in seconds
 def display_page(pathname):
     if pathname == "/recommender_system":
         return recommender_layout
