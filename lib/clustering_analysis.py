@@ -114,7 +114,7 @@ cluster_tab=dbc.Row(
         ),
         dcc.Graph(id='indicator-graphic'),
         ],
-        width={"size": 6, "offset": 3},
+        width={"size": 8, "offset": 2},
     )
 )
 
