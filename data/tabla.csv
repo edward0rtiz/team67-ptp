@@ -1,0 +1,49 @@
+"Category","N","Name","cluster"
+"A",1312,"Card type",1
+"C",1803638,"Card type",1
+"D",74654,"Card type",1
+"R",23,"Card type",1
+"A",420,"Card type",0
+"C",1105736,"Card type",0
+"D",5814404,"Card type",0
+"R",5,"Card type",0
+"A",952239,"Merchant classification",1
+"A+",577434,"Merchant classification",1
+"B",94798,"Merchant classification",1
+"B+",121394,"Merchant classification",1
+"C",122387,"Merchant classification",1
+"N",11375,"Merchant classification",1
+"A",1588874,"Merchant classification",0
+"A+",3196473,"Merchant classification",0
+"B",294684,"Merchant classification",0
+"B+",1045411,"Merchant classification",0
+"C",695635,"Merchant classification",0
+"N",99488,"Merchant classification",0
+"(0-10)",847893,"Hour",1
+"(11-12)",287973,"Hour",1
+"(15-17)",355632,"Hour",1
+"(18-23)",388129,"Hour",1
+"(0-10)",1421006,"Hour",0
+"(11-12)",2303178,"Hour",0
+"(15-17)",1576399,"Hour",0
+"(18-23)",1619982,"Hour",0
+"AMEX",70265,"Paymentmethod franchise",1
+"DINERS",11556,"Paymentmethod franchise",1
+"DISCOVER",13,"Paymentmethod franchise",1
+"MASTERCARD",502898,"Paymentmethod franchise",1
+"PSE",221918,"Paymentmethod franchise",1
+"VISA",1072977,"Paymentmethod franchise",1
+"AMEX",70090,"Paymentmethod franchise",0
+"DINERS",13195,"Paymentmethod franchise",0
+"DISCOVER",3,"Paymentmethod franchise",0
+"MASTERCARD",551826,"Paymentmethod franchise",0
+"PSE",5947198,"Paymentmethod franchise",0
+"VISA",338253,"Paymentmethod franchise",0
+"APPROVED",910259,"Response code",1
+"FAILED",15522,"Response code",1
+"PENDING",31,"Response code",1
+"REJECTED",953815,"Response code",1
+"APPROVED",5488094,"Response code",0
+"FAILED",132962,"Response code",0
+"PENDING",41,"Response code",0
+"REJECTED",1299468,"Response code",0
