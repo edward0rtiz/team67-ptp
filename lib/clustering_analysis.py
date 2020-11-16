@@ -12,9 +12,7 @@ app = __import__("app").app
 from app import app
 import dash_core_components as dcc
 import dash_html_components as html
-
-from .data.dataframes import ds_x
-from .data.dataframes import df_x
+from .data.dataframes import df_a
 
 # Dash Bootstrap Components
 import dash_bootstrap_components as dbc
@@ -36,7 +34,7 @@ layout = html.Div(
         ),
     ]
 )
-
+"""
 available_indicators = ['transaction_card_type',
 'merchant_classification',
 'category_hour',
@@ -80,6 +78,82 @@ def update_graph(select):
         name='cluster 1',
         marker_color='lightsalmon'
     ))
-    fig.update_layout(barmode='group', xaxis_tickangle=-45)
+    fig.update_layout(
+        title="Clusterization by {}".format(select),
+        xaxis=dict(title=df_c['{}'.format(select)].name,
+        titlefont_size=16,
+        tickfont_size=14,
+        ),
+        yaxis=dict(title='Transaction Amount',
+        titlefont_size=16,
+        tickfont_size=14,
+        ),
+        barmode='group',
+        )
+    return fig
+    """
 
+available_indicators = ['Card type',
+'Merchant classification',
+'Hour',
+'Paymentmethod franchise',
+'Response code']
+
+cluster_tab=dbc.Row(
+    dbc.Col(
+        [
+        html.Div(
+            [
+            html.P("Choose a category", className="choose_category"),
+            ], 
+        ),
+        dbc.Select(
+            id="select",
+            options=[{"label":i,"value": i} for i in available_indicators],
+            value='Card type',
+        ),
+        dcc.Graph(id='indicator-graphic'),
+        ],
+        width={"size": 6, "offset": 3},
+    )
+)
+
+@app.callback(
+    dash.dependencies.Output('indicator-graphic', 'figure'),
+    [dash.dependencies.Input('select', 'value'),])
+
+def update_graph(select):
+    A=df_a[df_a["Name"]=="{}".format(select)]
+    B=df_a[df_a["Name"]=="{}".format(select)]
+    A=A[A['cluster']==0]
+    B=B[B['cluster']==1]
+    fig = go.Figure()
+    fig.add_trace(go.Bar(
+        x=A['Category'],
+        y=A['N'],
+        name='cluster 0',
+        marker_color='tomato'
+        ))
+    fig.add_trace(go.Bar(
+        x=B['Category'],
+        y=B['N'],
+        name='cluster 1',
+        marker_color='slategray'
+        ))
+    fig.update_layout(
+        title='Clusterization by {}'.format(select),
+        xaxis=dict(
+        title='Category',
+        titlefont_size=16,
+        tickfont_size=14,
+        ),
+        yaxis=dict(
+        title='Transaction Amount',
+        titlefont_size=16,
+        tickfont_size=14,
+        ),
+        barmode='group',
+        #bargap=0.15, # gap between bars of adjacent location coordinates.
+        #bargroupgap=0.1 # gap between bars of the same location coordinate.
+    )
     return fig
