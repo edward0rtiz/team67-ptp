@@ -90,11 +90,11 @@ descriptive_layout = html.Div(
 
 # Clustering Analysis
 clustering_layout = html.Div([clustering_analysis_2.layout,
-                              clustering_analysis_2.cluster_tab])
+                              clustering_analysis_2.clusterization_tabs])
 
 # Recommender System
 recommender_layout = html.Div([recommender_system.layout,
-                               recommender_system.form])
+                               recommender_system.recommender_tabs])
 
 # About us
 about_layout = html.Div([about_us.layout])

@@ -29,40 +29,88 @@ layout = html.Div(
     ]
 )
 
-form = dbc.Row(
-    dbc.Col(
-        html.Div(
-            [
-                html.P("Type payer id", className="payer_id"),
-                dbc.InputGroup(
-                    [
-                        dbc.InputGroupAddon("payer id", addon_type="prepend"),
-                        dbc.Input(
-                            id="input-box",
-                            placeholder="Enter payer id",
-                            type="text",
+reco_tab = dbc.Card(
+    dbc.CardBody(
+        [
+            html.Div(
+                [
+                    dbc.Button("More Info", id="alert-toggle-fade",
+                               className="mr-1"),
+                    html.Hr(),
+                    dbc.Alert(
+                        "You can see the recommender system by \
+                        choosing entering payer id. Click some examples \
+                            to try out",
+                        id="alert-fade",
+                        dismissable=True,
+                        is_open=True,
+                    ),
+                ]
+            ),
+            dbc.Container([
+                dbc.Row(
+                    dbc.Col(
+                        html.Div(
+                            [html.P("Type payer id", className="payer_id"),
+                            dbc.InputGroup(
+                                [dbc.InputGroupAddon("payer id", 
+                                                     addon_type="prepend"),
+                                 dbc.Input(id="input-box",
+                                           placeholder="Enter payer id",
+                                           type="text",
+                                           ),
+                                           html.Br(),
+                                 dbc.Button("Submit", outline=True, 
+                                            color="secundary", 
+                                            style={"color": "#F37126"},
+                                            id="button", n_clicks=0,
+                                            ),
+                                 dbc.Button("Some examples", id="collapse-button",
+                                            style={"color": "#F37126"},
+                                            color="secundary",
+                                            ),
+                                ],
+                            className="sm-3",
+                            ),
+                            html.Div(
+                            id="output-container-button",
+                            children="Enter a value and press submit",
+                            ),
+                            html.Div(id="output-container-button",
+                                     children="Enter a value and press submit",
+                                    ),
+                                    dbc.Collapse(dbc.Card(dbc.CardBody(["FOT9Z57DCU", html.Br(),  
+                                                                        "KBIACYJKK9",html.Br(), 
+                                                                        "M0S?4Y1BL8", html.Br(), 
+                                                                        "MT1RAFJ?R6", html.Br(), 
+                                                                        "BSHR89HVOD",html.Br(), 
+                                                                        "ICQUPMK6?6", html.Br(), 
+                                                                        "APVPG9RNIR", html.Br(), 
+                                                                        "A0OJL7D1LV", html.Br(), 
+                                                                        "F5IZMOAJEO"]
+                                                                        )
+                                                        ),
+                                                        id="collapse",
+                                                ),
+                            ],
                         ),
-                        html.Br(),
-                        dbc.Button(
-                            "Submit",
-                            outline=True,
-                            color="secundary",
-                            style={"color": "#F37126"},
-                            id="button",
-                            n_clicks=0,
-                        ),
-                    ],
-                    className="sm-3",
-                ),
-                html.Div(
-                    id="output-container-button",
-                    children="Enter a value and press submit",
-                ),
-            ],
-        ),
-        width={"size": 6, "offset": 3},
-    )
+                    width={"size": 10, "offset": 1},
+                    )
+                )
+            ])
+        ])
 )
+
+
+@app.callback(
+    Output("collapse", "is_open"),
+    [Input("collapse-button", "n_clicks")],
+    [State("collapse", "is_open")],
+)
+def toggle_collapse(n, is_open):
+    if n:
+        return not is_open
+    return is_open
 
 
 @app.callback(
@@ -136,3 +184,12 @@ def update_output(n_clicks, value):
     )
     if n_clicks >= 1:
         return result
+
+
+    # Component to call dashboard in tabs
+recommender_tabs = dbc.Tabs(
+    [
+        dbc.Tab(reco_tab, label="Recommender system"),
+        # dbc.Tab(cluster_tab2, label="Single cluster chart by type"),
+    ]
+)
