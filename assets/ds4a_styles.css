@@ -1,0 +1,95 @@
+/*This document contains the styles that use the app. You can change these as you wish.*/
+
+.ds4a-app {
+    background-color: #F8F9F9
+}
+
+.ds4a-body {
+    margin-left: 18rem;
+    margin-right: 2rem;
+    padding: 2rem 1rem;
+    background-color: #F8F9F9;
+}
+
+.ds4a-title {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    height: 120px;
+    width: 100%;
+    margin-left: 16rem;
+    margin-right: 2rem;
+    padding: 2rem 1rem;
+    background-color: #F8F9F9;
+}
+
+.ds4a-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 16rem;
+    padding: 2rem 1rem;
+    background-color: #AAB7B8; 
+}
+
+.menulogo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0rem;
+    background-color: #ffffff;
+}
+/* index */
+.logosinferiores{
+    margin: auto auto auto 200px;
+    display: block;
+}
+.barrainferior{
+    bottom: 0;
+    background-color: #F8F6F6;
+    border: 0px;
+    margin: 10px auto;
+    display: block;
+}
+/* Abaut us*/
+.img_marg{
+    border-radius: 125px;
+    border: 10px solid;
+    border-color: #F8F6F0;
+    background-color: #F8F6F6;
+    margin: 10px auto;
+    display: block;
+}
+
+.H5_margin{
+    color: #8190A5;
+    margin-top: 20px;
+    text-align: center;
+}
+.P_margin{
+    color: #8190A5;
+    margin-top: 0px;
+    text-align: center;
+}
+
+.logo_correo{
+    border-radius: 12px;
+    margin: 5px 0.05px 5px 0.05px;
+}
+
+.correo_marg{
+    border-radius: 35px;
+    margin: auto auto auto 210px;
+}
+
+.correo_marg_d{
+    border-radius: 35px;
+    margin: auto auto auto 495px;
+}
+
+.In_marg{
+    border-radius: 25px;
+    margin: auto auto auto 20px;
+}

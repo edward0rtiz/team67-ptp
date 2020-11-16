@@ -10,7 +10,13 @@ import dash_bootstrap_components as dbc
 
 
 # BS = "https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/flatly/bootstrap.min.css"
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+app = dash.Dash(
+    __name__,
+    external_stylesheets=[dbc.themes.BOOTSTRAP],
+    title="placetopay recommender system",
+    # assets_folder="favicon.ico",
+)
+
 # app = dash.Dash(__name__, external_stylesheets=[BS])
 server = app.server
 

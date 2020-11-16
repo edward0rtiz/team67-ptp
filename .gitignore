@@ -11,5 +11,4 @@ logs/
 *.model
 *.npy
 .idea
-*.png
 *.pdf

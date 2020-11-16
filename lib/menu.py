@@ -18,25 +18,24 @@ from datetime import datetime as dt
 # Recall app
 from app import app
 
-
-####################################################################################
-# Add the DS4A_Img
-####################################################################################
-
-# DS4A_Img = html.Div(
-#    children=[html.Img(src=app.get_asset_url("ds4a-img.svg"), id="ds4a-image",)],
-# )
-DS4A_LOGO = "../static/images/correlation-one.png"
-
-#############################################################################
-# Menu Layout
-#############################################################################
+PTP_LOGO = "../static/images/placetopay.png"
+PTP_LOGO1 = "../assets/home.png"
 
 
 def Navbar():
     navbar = dbc.NavbarSimple(
         children=[
-            dbc.NavItem(dbc.NavLink("Recommender System", href="/recommender_system")),
+            dbc.Button(
+                [html.Img(src=PTP_LOGO, height="40px")],
+                active=True,
+                href="https://www.mintic.gov.co/portal/inicio/",
+                color="#F8F6F6",
+                className="menulogo",
+            ),
+            dbc.NavItem(dbc.NavLink("Home", href="/home")),
+            dbc.NavItem(
+                dbc.NavLink("Recommender System", href="/recommender_system"),
+            ),
             dbc.NavItem(
                 dbc.NavLink("Clustering Analysis", href="/clustering_analysis")
             ),
@@ -45,8 +44,8 @@ def Navbar():
             ),
             dbc.NavItem(dbc.NavLink("About Us", href="/about_us")),
         ],
-        brand="Home",
-        brand_href="/home",
+        # brand="Home",
+        # brand_href="/home",
         sticky="top",
         color="#FEFEFE",
     )

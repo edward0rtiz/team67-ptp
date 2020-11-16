@@ -18,5 +18,4 @@ df_t = (
 )
 df_t = df_t.reset_index(drop=True)
 df_t = df_t.rename(columns={0: "amount"})
-# df_t
 df_t = df_t.iloc[0:21]
