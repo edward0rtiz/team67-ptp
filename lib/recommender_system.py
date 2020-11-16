@@ -57,6 +57,13 @@ form = dbc.Row(
                             id="button",
                             n_clicks=0,
                         ),
+                        dbc.Button(
+                            "Some examples",
+                            id="collapse-button",
+                            style={"color": "#F37126"},
+                            color="secundary",
+                        ),
+                        html.Br(),
                     ],
                     className="sm-3",
                 ),
@@ -64,11 +71,25 @@ form = dbc.Row(
                     id="output-container-button",
                     children="Enter a value and press submit",
                 ),
+                dbc.Collapse(
+                    dbc.Card(dbc.CardBody(["FOT9Z57DCU", html.Br(),  "KBIACYJKK9",html.Br(), "M0S?4Y1BL8", html.Br(), "MT1RAFJ?R6", html.Br(), "BSHR89HVOD",html.Br(), "ICQUPMK6?6", html.Br(), "APVPG9RNIR", html.Br(), "A0OJL7D1LV", html.Br(), "F5IZMOAJEO"])),
+                    id="collapse",
+                ),
             ],
         ),
         width={"size": 6, "offset": 3},
     )
 )
+
+@app.callback(
+    Output("collapse", "is_open"),
+    [Input("collapse-button", "n_clicks")],
+    [State("collapse", "is_open")],
+)
+def toggle_collapse(n, is_open):
+    if n:
+        return not is_open
+    return is_open
 
 
 @app.callback(
